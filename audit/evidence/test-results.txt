@@ -1,0 +1,205 @@
+No files changed, compilation skipped
+Warning: Failure from "/home/kodr/Repos/peekpeak/contracts/cache/invariant/failures/PeekRegistryInvariantTest/invariant_TreasuryMatchesEmittedPremiums" file was ignored because test contract bytecode has changed.
+Warning: Failure from "/home/kodr/Repos/peekpeak/contracts/cache/invariant/failures/PeekRegistryInvariantTest/invariant_RegistryBalanceSolvent" file was ignored because test contract bytecode has changed.
+Warning: Failure from "/home/kodr/Repos/peekpeak/contracts/cache/invariant/failures/PeekRegistryInvariantTest/invariant_FullConservation" file was ignored because test contract bytecode has changed.
+
+Ran 2 tests for test/Packing.t.sol:PackingTest
+[PASS] test_EscrowLivesOutsideJobStruct() (gas: 128072)
+[PASS] test_JobStructOccupiesExactlyTwoSlotsWithZeroPadding() (gas: 124502)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 543.23µs (229.04µs CPU time)
+
+Ran 6 tests for test/PharaohEpochKeeper.t.sol:PharaohEpochKeeperTest
+[PASS] test_CheckJob_BeforeAndAfterEpoch() (gas: 18584)
+[PASS] test_PerformJob_FailingLegDoesNotRollBackEpoch() (gas: 439179)
+[PASS] test_PerformJob_IdempotentWithinEpoch() (gas: 77491)
+[PASS] test_PerformJob_Reverts_NotRegistry() (gas: 10959)
+[PASS] test_PerformJob_RollsEpochAndCallsLegs() (gas: 78401)
+[PASS] test_PerformJob_VoterOnlyAndGaugeOnlyConfigs() (gas: 665502)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 737.59µs (520.50µs CPU time)
+
+Ran 51 tests for test/PeekRegistry.t.sol:PeekRegistryTest
+[PASS] test_Constructor_CustomNativeTip() (gas: 3357755)
+[PASS] test_Constructor_Reverts_LowOverheadBuffer() (gas: 88862)
+[PASS] test_Constructor_Reverts_TipAboveBound() (gas: 88932)
+[PASS] test_Constructor_Reverts_ZeroOwner() (gas: 40647)
+[PASS] test_Constructor_Reverts_ZeroTreasury() (gas: 86715)
+[PASS] test_Constructor_SetsDefaults() (gas: 21321)
+[PASS] test_DepositGas_IncreasesEscrow() (gas: 133897)
+[PASS] test_DepositGas_Reverts_UnknownJob() (gas: 17330)
+[PASS] test_DepositGas_Reverts_ZeroDeposit() (gas: 118787)
+[PASS] test_DirectEthTransferReverts() (gas: 11897)
+[PASS] test_ExecuteJob_ConsecutiveRevertsDeactivateJob() (gas: 164744)
+[PASS] test_ExecuteJob_DepletedJobSoftExitsAndDeactivates() (gas: 156971)
+[PASS] test_ExecuteJob_EmitsJobExecuted() (gas: 260873)
+[PASS] test_ExecuteJob_FailedRefundGoesToPendingPull() (gas: 600029)
+[PASS] test_ExecuteJob_GasLimitCapsTargetConsumption() (gas: 281884)
+[PASS] test_ExecuteJob_HappyPathAccounting() (gas: 270988)
+[PASS] test_ExecuteJob_PullReentryNeutralized() (gas: 491606)
+[PASS] test_ExecuteJob_ReentrancyNeutralized() (gas: 471962)
+[PASS] test_ExecuteJob_RevertingTargetNeverChargesAnyone() (gas: 145140)
+[PASS] test_ExecuteJob_Reverts_GasPriceAboveCeiling() (gas: 129905)
+[PASS] test_ExecuteJob_Reverts_InactiveJob() (gas: 132490)
+[PASS] test_ExecuteJob_Reverts_UnauthorizedExecutor() (gas: 128565)
+[PASS] test_ExecuteJob_Reverts_UnknownJob() (gas: 22780)
+[PASS] test_ExecuteJob_Reverts_WhenPaused() (gas: 138427)
+[PASS] test_ExecuteJob_SuccessResetsRevertCounter() (gas: 340587)
+[PASS] test_ExecuteJob_TipChangeApplies() (gas: 267097)
+[PASS] test_ExecuteJob_WithdrawReentryNeutralized() (gas: 491980)
+[PASS] test_Pull_Reverts_NothingPending() (gas: 15670)
+[PASS] test_RegisterJob_AcceptsExactMinimum() (gas: 117522)
+[PASS] test_RegisterJob_HappyPath() (gas: 125233)
+[PASS] test_RegisterJob_Reverts_CeilingTooLow() (gas: 22326)
+[PASS] test_RegisterJob_Reverts_EscrowOverflow() (gas: 23059)
+[PASS] test_RegisterJob_Reverts_GasLimitBounds() (gas: 34177)
+[PASS] test_RegisterJob_Reverts_InsufficientDeposit() (gas: 24416)
+[PASS] test_RegisterJob_Reverts_WhenPaused() (gas: 31858)
+[PASS] test_RegisterJob_Reverts_ZeroTarget() (gas: 20061)
+[PASS] test_RegisterJob_UniqueIdsForSameTarget() (gas: 204294)
+[PASS] test_SetExecutor() (gas: 33264)
+[PASS] test_SetJobStatus_Reverts_NotOwner() (gas: 121617)
+[PASS] test_SetJobStatus_Reverts_UnknownJob() (gas: 10815)
+[PASS] test_SetJobStatus_Toggles() (gas: 130821)
+[PASS] test_SetKeeperTip_Bounds() (gas: 21995)
+[PASS] test_SetMaxConsecutiveReverts() (gas: 23854)
+[PASS] test_SetMaxConsecutiveReverts_AppliesImmediately() (gas: 146838)
+[PASS] test_SetTreasury() (gas: 27850)
+[PASS] test_WithdrawGas_PaysOwnerAndReducesEscrow() (gas: 132665)
+[PASS] test_WithdrawGas_ReentrantAttemptGetsNothing() (gas: 780586)
+[PASS] test_WithdrawGas_Reverts_InsufficientEscrow() (gas: 124874)
+[PASS] test_WithdrawGas_Reverts_NotOwner() (gas: 126664)
+[PASS] test_WithdrawGas_Reverts_UnknownJob() (gas: 15905)
+[PASS] test_WithdrawGas_Reverts_WhenReceiverRejectsEth() (gas: 455114)
+Suite result: ok. 51 passed; 0 failed; 0 skipped; finished in 2.33ms (6.22ms CPU time)
+
+Ran 6 tests for test/AuditRegressions.t.sol:AuditRegressionsTest
+[PASS] test_F1_MidCallDepositSurvivesExecution() (gas: 485822)
+[PASS] test_F2_ExactlyOneByteOverCapReverts() (gas: 256081)
+[PASS] test_F2_OversizedPayloadRevertsPreDispatch() (gas: 26041672)
+[PASS] test_F2_PayloadAtCapExecutesAndStaysSolvent() (gas: 880166)
+[PASS] test_F4_Constructor_AcceptsBoundaryBuffer() (gas: 1688869)
+[PASS] test_F4_Constructor_Reverts_BufferAboveBound() (gas: 94188)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 60.60ms (59.95ms CPU time)
+
+Ran 12 tests for test/CoveragePool.t.sol:CoveragePoolTest
+[PASS] test_Covered_FalseBeforeExpiryAndAfter() (gas: 85094)
+[PASS] test_ReceivingEthDirectlyReverts() (gas: 11854)
+[PASS] test_SetPricePerDay_OnlyOwner_AndNotRetroactive() (gas: 94490)
+[PASS] test_SetTreasury_RoutesFutureDeposits() (gas: 92512)
+[PASS] test_Sponsor_BuysWholeDays_AndPaysTreasuryImmediately() (gas: 88550)
+[PASS] test_Sponsor_ExtendsForwardOnly() (gas: 102012)
+[PASS] test_Sponsor_PartialDayRoundsDownAndIsRevenue() (gas: 85362)
+[PASS] test_Sponsor_Reverts_AbsurdDepositBeyondUint128() (gas: 18274)
+[PASS] test_Sponsor_Reverts_BelowOneDayPrice() (gas: 19846)
+[PASS] test_Sponsor_Reverts_TermTooLong() (gas: 19927)
+[PASS] test_Sponsor_Reverts_UnpricedChain() (gas: 19787)
+[PASS] test_Sponsor_Reverts_ZeroChainId() (gas: 17576)
+Suite result: ok. 12 passed; 0 failed; 0 skipped; finished in 1.29s (1.56ms CPU time)
+
+Ran 4 tests for test/invariant/PeekRegistryInvariant.t.sol:PeekRegistryInvariantTest
+[PASS] invariant_FullConservation() (runs: 512, calls: 32768, reverts: 1652)
+
+╭----------+--------------------------+-------+---------+----------╮
+| Contract | Selector                 | Calls | Reverts | Discards |
++==================================================================+
+| Handler  | armGoodJob               | 3341  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | depositGas               | 3291  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | executeJob               | 3244  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | pullExecutor             | 3275  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | registerJob              | 3329  | 1652    | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setJobStatus             | 3245  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setKeeperTip             | 3164  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | toggleExecutorAcceptsEth | 3185  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | togglePause              | 3358  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | withdrawGas              | 3336  | 0       | 0        |
+╰----------+--------------------------+-------+---------+----------╯
+
+[PASS] invariant_GasUsedBoundedBySolvencyModel() (runs: 512, calls: 32768, reverts: 1591)
+
+╭----------+--------------------------+-------+---------+----------╮
+| Contract | Selector                 | Calls | Reverts | Discards |
++==================================================================+
+| Handler  | armGoodJob               | 3268  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | depositGas               | 3213  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | executeJob               | 3251  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | pullExecutor             | 3289  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | registerJob              | 3235  | 1591    | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setJobStatus             | 3238  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setKeeperTip             | 3341  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | toggleExecutorAcceptsEth | 3321  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | togglePause              | 3350  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | withdrawGas              | 3262  | 0       | 0        |
+╰----------+--------------------------+-------+---------+----------╯
+
+[PASS] invariant_RegistryBalanceSolvent() (runs: 512, calls: 32768, reverts: 1615)
+
+╭----------+--------------------------+-------+---------+----------╮
+| Contract | Selector                 | Calls | Reverts | Discards |
++==================================================================+
+| Handler  | armGoodJob               | 3316  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | depositGas               | 3233  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | executeJob               | 3372  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | pullExecutor             | 3223  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | registerJob              | 3241  | 1615    | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setJobStatus             | 3195  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setKeeperTip             | 3227  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | toggleExecutorAcceptsEth | 3383  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | togglePause              | 3263  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | withdrawGas              | 3315  | 0       | 0        |
+╰----------+--------------------------+-------+---------+----------╯
+
+[PASS] invariant_TreasuryMatchesEmittedPremiums() (runs: 512, calls: 32768, reverts: 1590)
+
+╭----------+--------------------------+-------+---------+----------╮
+| Contract | Selector                 | Calls | Reverts | Discards |
++==================================================================+
+| Handler  | armGoodJob               | 3312  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | depositGas               | 3305  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | executeJob               | 3318  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | pullExecutor             | 3327  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | registerJob              | 3219  | 1590    | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setJobStatus             | 3247  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | setKeeperTip             | 3237  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | toggleExecutorAcceptsEth | 3292  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | togglePause              | 3208  | 0       | 0        |
+|----------+--------------------------+-------+---------+----------|
+| Handler  | withdrawGas              | 3303  | 0       | 0        |
+╰----------+--------------------------+-------+---------+----------╯
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 1.91s (5.92s CPU time)
+
+Ran 6 test suites in 1.91s (3.27s CPU time): 81 tests passed, 0 failed, 0 skipped (81 total tests)

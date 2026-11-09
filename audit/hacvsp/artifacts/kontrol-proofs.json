@@ -1,0 +1,15 @@
+{
+  "passed": [
+    "test_Proof_NoCustody_AfterSponsorship",
+    "test_Proof_Pause_BlocksRegistration",
+    "test_Proof_Reprice_OwnerOnly",
+    "test_Proof_Sponsorship_InTermExtension_Compounds",
+    "test_Proof_UnsponsoredChains_NeverCovered"
+  ],
+  "failed": [],
+  "failed_count": 0,
+  "total": 5,
+  "coverage_pct": null,
+  "coverage_min_pct": 90.0,
+  "ok": true
+}

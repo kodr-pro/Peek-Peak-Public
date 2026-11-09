@@ -1,0 +1,564 @@
+{
+  "summary": {
+    "contracts": 78,
+    "functions_audited": 471,
+    "critical_writes": 14,
+    "missing_event_failures": 0,
+    "indexing_warnings": 0,
+    "suppressed": 0
+  },
+  "missing_events": [],
+  "indexing_warnings": [],
+  "mutation_graph": {
+    "script/DeployRegistry.s.sol::DeployRegistry": {
+      "run": {
+        "writes": [
+          "owner"
+        ],
+        "critical_writes": [
+          "owner"
+        ],
+        "emits": []
+      }
+    },
+    "src/CoveragePool.sol::CoveragePool": {
+      "": {
+        "writes": [
+          "treasury"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "sponsor": {
+        "writes": [
+          "terms"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "Sponsored"
+        ]
+      },
+      "setPricePerDay": {
+        "writes": [
+          "pricePerDay"
+        ],
+        "critical_writes": [
+          "pricePerDay"
+        ],
+        "emits": [
+          "PriceSet"
+        ]
+      },
+      "setTreasury": {
+        "writes": [
+          "treasury"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "TreasurySet"
+        ]
+      }
+    },
+    "src/DemoHeartbeat.sol::DemoHeartbeat": {
+      "": {
+        "writes": [
+          "REGISTRY_ADDRESS",
+          "nextRun"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "nextRun",
+          "runCount"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "DemoTick"
+        ]
+      }
+    },
+    "src/PeekRegistry.sol::PeekRegistry": {
+      "": {
+        "writes": [
+          "OVERHEAD_BUFFER",
+          "keeperTip",
+          "maxConsecutiveReverts",
+          "treasury"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "registerJob": {
+        "writes": [
+          "escrows",
+          "jobId",
+          "jobNonce",
+          "jobs"
+        ],
+        "critical_writes": [
+          "escrows"
+        ],
+        "emits": [
+          "JobRegistered"
+        ]
+      },
+      "depositGas": {
+        "writes": [
+          "escrows"
+        ],
+        "critical_writes": [
+          "escrows"
+        ],
+        "emits": [
+          "GasDeposited"
+        ]
+      },
+      "withdrawGas": {
+        "writes": [
+          "escrows"
+        ],
+        "critical_writes": [
+          "escrows"
+        ],
+        "emits": [
+          "GasWithdrawn"
+        ]
+      },
+      "setJobStatus": {
+        "writes": [
+          "job"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "JobStatusSet"
+        ]
+      },
+      "executeJob": {
+        "writes": [
+          "escrows",
+          "job",
+          "pendingPull"
+        ],
+        "critical_writes": [
+          "escrows"
+        ],
+        "emits": [
+          "PullPending",
+          "JobExecuted",
+          "JobDeactivated",
+          "JobDeactivated",
+          "TargetReverted",
+          "JobDeactivated"
+        ]
+      },
+      "pull": {
+        "writes": [
+          "pendingPull"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "PullWithdrawn"
+        ]
+      },
+      "setTreasury": {
+        "writes": [
+          "treasury"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "TreasurySet"
+        ]
+      },
+      "setExecutor": {
+        "writes": [
+          "authorizedExecutors"
+        ],
+        "critical_writes": [
+          "authorizedExecutors"
+        ],
+        "emits": [
+          "ExecutorSet"
+        ]
+      },
+      "setKeeperTip": {
+        "writes": [
+          "keeperTip"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "KeeperTipSet"
+        ]
+      },
+      "setMaxConsecutiveReverts": {
+        "writes": [
+          "maxConsecutiveReverts"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "MaxRevertsSet"
+        ]
+      },
+      "setPaused": {
+        "writes": [
+          "paused"
+        ],
+        "critical_writes": [
+          "paused"
+        ],
+        "emits": [
+          "PausedSet"
+        ]
+      }
+    },
+    "src/adapters/HarvestKeeper.sol::HarvestKeeper": {
+      "": {
+        "writes": [
+          "REGISTRY_ADDRESS",
+          "harvester",
+          "interval",
+          "nextRun"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "harvestCount",
+          "nextRun"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "Harvested"
+        ]
+      }
+    },
+    "src/adapters/PharaohEpochKeeper.sol::PharaohEpochKeeper": {
+      "": {
+        "writes": [
+          "REGISTRY_ADDRESS",
+          "gauge",
+          "nextEpochTimestamp",
+          "voter"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "nextEpochTimestamp"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "EpochRolled"
+        ]
+      }
+    },
+    "src/mocks/MockJob.sol::MockJob": {
+      "": {
+        "writes": [
+          "REGISTRY_ADDRESS"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "setReady": {
+        "writes": [
+          "ready"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "setGasToBurn": {
+        "writes": [
+          "gasToBurn"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "lastPayload",
+          "performCount",
+          "ready"
+        ],
+        "critical_writes": [],
+        "emits": [
+          "Performed"
+        ]
+      }
+    },
+    "test/AuditRegressions.t.sol::SelfDepositingJob": {
+      "": {
+        "writes": [
+          "registry"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "setJobId": {
+        "writes": [
+          "ownJobId"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "performCount"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/AuditRegressions.t.sol::CheapJob": {
+      "performJob": {
+        "writes": [
+          "performCount"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/AuditRegressions.t.sol::AuditRegressionsTest": {
+      "setUp": {
+        "writes": [
+          "registry"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/CoveragePool.t.sol::CoveragePoolTest": {
+      "setUp": {
+        "writes": [
+          "pool"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/DemoHeartbeat.t.sol::DemoHeartbeatTest": {
+      "setUp": {
+        "writes": [
+          "demo"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/HarvestKeeper.t.sol::HarvestKeeperTest": {
+      "setUp": {
+        "writes": [
+          "gauge",
+          "keeper"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/Packing.t.sol::PackingTest": {
+      "setUp": {
+        "writes": [
+          "job",
+          "registry"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/PeekRegistry.t.sol::PeekRegistryTest": {
+      "setUp": {
+        "writes": [
+          "job",
+          "registry",
+          "revertingJob"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/PharaohEpochKeeper.t.sol::PharaohEpochKeeperTest": {
+      "setUp": {
+        "writes": [
+          "gauge",
+          "keeper",
+          "voter"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/SkillTemplate.t.sol::MyKeeper": {
+      "": {
+        "writes": [
+          "REGISTRY_ADDRESS"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "maintainCount",
+          "nextRun"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/SkillTemplate.t.sol::MyKeeperTest": {
+      "setUp": {
+        "writes": [
+          "keeper"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/helpers/TestContracts.sol::MockVoter": {
+      "distribute": {
+        "writes": [
+          "distributeCount"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/helpers/TestContracts.sol::MockGauge": {
+      "harvest": {
+        "writes": [
+          "harvestCount"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/helpers/TestContracts.sol::ToggledExecutor": {
+      "": {
+        "writes": [
+          "registry"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "setAcceptEth": {
+        "writes": [
+          "acceptEth"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/helpers/TestContracts.sol::AttackerJob": {
+      "": {
+        "writes": [
+          "registry"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "configure": {
+        "writes": [
+          "attackJobId",
+          "attackMode"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "performJob": {
+        "writes": [
+          "attackCount"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/helpers/TestContracts.sol::ReentrantWithdrawer": {
+      "": {
+        "writes": [
+          "attacked"
+        ],
+        "critical_writes": [],
+        "emits": []
+      },
+      "attack": {
+        "writes": [
+          "amount",
+          "jobId"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/invariant/Handler.sol::Handler": {
+      "": {
+        "writes": [
+          "executor",
+          "goodTarget",
+          "owner",
+          "registry",
+          "revertingTarget"
+        ],
+        "critical_writes": [
+          "owner"
+        ],
+        "emits": []
+      },
+      "registerJob": {
+        "writes": [
+          "ghostDeposits"
+        ],
+        "critical_writes": [
+          "ghostDeposits"
+        ],
+        "emits": []
+      },
+      "depositGas": {
+        "writes": [
+          "ghostDeposits"
+        ],
+        "critical_writes": [
+          "ghostDeposits"
+        ],
+        "emits": []
+      },
+      "withdrawGas": {
+        "writes": [
+          "ghostOwnerWithdrawn"
+        ],
+        "critical_writes": [
+          "ghostOwnerWithdrawn"
+        ],
+        "emits": []
+      },
+      "pullExecutor": {
+        "writes": [
+          "ghostExecutorRefunds"
+        ],
+        "critical_writes": [],
+        "emits": []
+      }
+    },
+    "test/invariant/PeekRegistryInvariant.t.sol::PeekRegistryInvariantTest": {
+      "setUp": {
+        "writes": [
+          "executor",
+          "goodTarget",
+          "handler",
+          "registry",
+          "registryBalance0",
+          "revertingTarget",
+          "treasuryBalance0",
+          "users"
+        ],
+        "critical_writes": [
+          "registryBalance0",
+          "treasuryBalance0"
+        ],
+        "emits": []
+      }
+    }
+  },
+  "suppressed": []
+}

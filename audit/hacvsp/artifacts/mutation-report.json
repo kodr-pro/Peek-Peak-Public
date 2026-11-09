@@ -1,0 +1,227 @@
+{
+  "total": 368,
+  "killed": 356,
+  "survived": 12,
+  "survivors": [
+    {
+      "id": "35",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "*",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "36",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "/",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "37",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "%",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "38",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "**",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "133",
+      "op": "IfStatementMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "217:13",
+      "from": "newBalance > type(uint128).max",
+      "to": "false",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "210",
+      "op": "BinaryOpMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "313:38",
+      "from": " - ",
+      "to": "%",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "224",
+      "op": "IfStatementMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "326:13",
+      "from": "currentEscrow < totalDeduction",
+      "to": "false",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "226",
+      "op": "DeleteExpressionMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "327:13",
+      "from": "job.isActive = false",
+      "to": "assert(true)",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "227",
+      "op": "AssignmentMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "327:28",
+      "from": "false",
+      "to": "true",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "330",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/HarvestKeeper.sol",
+      "loc": "69:13",
+      "from": "ok = false",
+      "to": "assert(true)",
+      "contract_guess": "HarvestKeeper"
+    },
+    {
+      "id": "356",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/PharaohEpochKeeper.sol",
+      "loc": "74:17",
+      "from": "voterOk = false",
+      "to": "assert(true)",
+      "contract_guess": "PharaohEpochKeeper"
+    },
+    {
+      "id": "362",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/PharaohEpochKeeper.sol",
+      "loc": "81:17",
+      "from": "gaugeOk = false",
+      "to": "assert(true)",
+      "contract_guess": "PharaohEpochKeeper"
+    }
+  ],
+  "engines": "gambit 1.0.6 + forge",
+  "kill_rate_pct": 96.74,
+  "core_survivors": [
+    {
+      "id": "35",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "*",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "36",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "/",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "37",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "%",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "38",
+      "op": "BinaryOpMutation",
+      "file": "src/CoveragePool.sol",
+      "loc": "73:80",
+      "from": " + ",
+      "to": "**",
+      "contract_guess": "CoveragePool"
+    },
+    {
+      "id": "133",
+      "op": "IfStatementMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "217:13",
+      "from": "newBalance > type(uint128).max",
+      "to": "false",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "210",
+      "op": "BinaryOpMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "313:38",
+      "from": " - ",
+      "to": "%",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "224",
+      "op": "IfStatementMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "326:13",
+      "from": "currentEscrow < totalDeduction",
+      "to": "false",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "226",
+      "op": "DeleteExpressionMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "327:13",
+      "from": "job.isActive = false",
+      "to": "assert(true)",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "227",
+      "op": "AssignmentMutation",
+      "file": "src/PeekRegistry.sol",
+      "loc": "327:28",
+      "from": "false",
+      "to": "true",
+      "contract_guess": "PeekRegistry"
+    },
+    {
+      "id": "330",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/HarvestKeeper.sol",
+      "loc": "69:13",
+      "from": "ok = false",
+      "to": "assert(true)",
+      "contract_guess": "HarvestKeeper"
+    },
+    {
+      "id": "356",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/PharaohEpochKeeper.sol",
+      "loc": "74:17",
+      "from": "voterOk = false",
+      "to": "assert(true)",
+      "contract_guess": "PharaohEpochKeeper"
+    },
+    {
+      "id": "362",
+      "op": "DeleteExpressionMutation",
+      "file": "src/adapters/PharaohEpochKeeper.sol",
+      "loc": "81:17",
+      "from": "gaugeOk = false",
+      "to": "assert(true)",
+      "contract_guess": "PharaohEpochKeeper"
+    }
+  ]
+}

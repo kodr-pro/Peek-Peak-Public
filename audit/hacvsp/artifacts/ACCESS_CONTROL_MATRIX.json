@@ -1,0 +1,388 @@
+{
+  "schema": [
+    "contract",
+    "function_signature",
+    "allowed_roles",
+    "is_pausable",
+    "timelock_delay_seconds"
+  ],
+  "rows": [
+    {
+      "contract": "CoveragePool",
+      "source": "src/CoveragePool.sol",
+      "function": "sponsor",
+      "function_signature": "sponsor(uint256)",
+      "param_types": [
+        "uint256"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "CoveragePool",
+      "source": "src/CoveragePool.sol",
+      "function": "covered",
+      "function_signature": "covered(uint256)",
+      "param_types": [
+        "uint256"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": false,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "CoveragePool",
+      "source": "src/CoveragePool.sol",
+      "function": "coverage",
+      "function_signature": "coverage(uint256)",
+      "param_types": [
+        "uint256"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": false,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "CoveragePool",
+      "source": "src/CoveragePool.sol",
+      "function": "setPricePerDay",
+      "function_signature": "setPricePerDay(uint256,uint256)",
+      "param_types": [
+        "uint256",
+        "uint256"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "CoveragePool",
+      "source": "src/CoveragePool.sol",
+      "function": "setTreasury",
+      "function_signature": "setTreasury(address payable)",
+      "param_types": [
+        "address payable"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "DemoHeartbeat",
+      "source": "src/DemoHeartbeat.sol",
+      "function": "checkJob",
+      "function_signature": "checkJob()",
+      "param_types": [],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": false,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "DemoHeartbeat",
+      "source": "src/DemoHeartbeat.sol",
+      "function": "performJob",
+      "function_signature": "performJob(bytes)",
+      "param_types": [
+        "bytes"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "registerJob",
+      "function_signature": "registerJob(address,uint32,uint64)",
+      "param_types": [
+        "address",
+        "uint32",
+        "uint64"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "depositGas",
+      "function_signature": "depositGas(bytes32)",
+      "param_types": [
+        "bytes32"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "withdrawGas",
+      "function_signature": "withdrawGas(bytes32,uint128)",
+      "param_types": [
+        "bytes32",
+        "uint128"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "nonReentrant"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setJobStatus",
+      "function_signature": "setJobStatus(bytes32,bool)",
+      "param_types": [
+        "bytes32",
+        "bool"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "executeJob",
+      "function_signature": "executeJob(bytes32,bytes)",
+      "param_types": [
+        "bytes32",
+        "bytes"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "nonReentrant"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "pull",
+      "function_signature": "pull()",
+      "param_types": [],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "nonReentrant"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setTreasury",
+      "function_signature": "setTreasury(address payable)",
+      "param_types": [
+        "address payable"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setExecutor",
+      "function_signature": "setExecutor(address,bool)",
+      "param_types": [
+        "address",
+        "bool"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setKeeperTip",
+      "function_signature": "setKeeperTip(uint128)",
+      "param_types": [
+        "uint128"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setMaxConsecutiveReverts",
+      "function_signature": "setMaxConsecutiveReverts(uint32)",
+      "param_types": [
+        "uint32"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "PeekRegistry",
+      "source": "src/PeekRegistry.sol",
+      "function": "setPaused",
+      "function_signature": "setPaused(bool)",
+      "param_types": [
+        "bool"
+      ],
+      "allowed_roles": [
+        "OWNER"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": [
+        "onlyOwner"
+      ]
+    },
+    {
+      "contract": "HarvestKeeper",
+      "source": "src/adapters/HarvestKeeper.sol",
+      "function": "checkJob",
+      "function_signature": "checkJob()",
+      "param_types": [],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": false,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "HarvestKeeper",
+      "source": "src/adapters/HarvestKeeper.sol",
+      "function": "performJob",
+      "function_signature": "performJob(bytes)",
+      "param_types": [
+        "bytes"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PharaohEpochKeeper",
+      "source": "src/adapters/PharaohEpochKeeper.sol",
+      "function": "checkJob",
+      "function_signature": "checkJob()",
+      "param_types": [],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": false,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    },
+    {
+      "contract": "PharaohEpochKeeper",
+      "source": "src/adapters/PharaohEpochKeeper.sol",
+      "function": "performJob",
+      "function_signature": "performJob(bytes)",
+      "param_types": [
+        "bytes"
+      ],
+      "allowed_roles": [
+        "PUBLIC"
+      ],
+      "state_changing": true,
+      "is_pausable": false,
+      "timelock_delay_seconds": null,
+      "modifiers": []
+    }
+  ],
+  "summary": {
+    "contracts": 5,
+    "entry_points": 22,
+    "state_changing": 17,
+    "public_state_changing": 10
+  }
+}

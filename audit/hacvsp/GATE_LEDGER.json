@@ -1,0 +1,2419 @@
+{
+  "spec_version": "v0.1.0",
+  "verdicts": [
+    {
+      "stage": 1,
+      "stage_name": "dependency_hygiene_and_supply_chain_verification",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "Zero unreviewed CVEs in third-party libraries; all submodules pinned to immutable commit hashes.",
+      "failures": [],
+      "evidence": [
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/dependency-checksums.sha256",
+        "artifacts/dependency-summary.json"
+      ],
+      "details": {
+        "submodule_issues": 0,
+        "floating_dependencies": 0,
+        "trivy": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "total": 0
+        },
+        "suppressed_cves": []
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1eacfd00e5a2673d6dda0bd7c7985ac569238ea9",
+      "timestamp": "2026-11-05T23:12:53+00:00"
+    },
+    {
+      "stage": 2,
+      "stage_name": "deterministic_build_and_bytecode_size_validation",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "Bytecode matches bit-for-bit in clean hermetic container; zero contracts violate EIP-170 or EIP-3860 size boundaries.",
+      "failures": [
+        "missing artifact: artifacts/canonical-ast.json",
+        "missing artifact: artifacts/reproducible-manifest.sha256",
+        "1 contract(s) violate EIP-170/EIP-3860: ['out-a/PeekRegistry.t.sol/PeekRegistryTest.json']",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/bytecode-sizes.json",
+        "artifacts/canonical-ast.json",
+        "artifacts/reproducible-manifest.sha256",
+        "artifacts/reproducibility.diff"
+      ],
+      "details": {
+        "reproducible": true,
+        "contracts": 42,
+        "size_violations": [
+          "out-a/PeekRegistry.t.sol/PeekRegistryTest.json"
+        ],
+        "build_info_files": 2
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "1eacfd00e5a2673d6dda0bd7c7985ac569238ea9",
+      "timestamp": "2026-11-05T23:13:36+00:00"
+    },
+    {
+      "stage": 2,
+      "stage_name": "deterministic_build_and_bytecode_size_validation",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "Bytecode matches bit-for-bit in clean hermetic container; zero contracts violate EIP-170 or EIP-3860 size boundaries.",
+      "failures": [],
+      "evidence": [
+        "artifacts/bytecode-sizes.json",
+        "artifacts/canonical-ast.json",
+        "artifacts/reproducible-manifest.sha256",
+        "artifacts/reproducibility.diff"
+      ],
+      "details": {
+        "reproducible": true,
+        "contracts": 3,
+        "size_violations": [],
+        "ast_sources": 53,
+        "build_info_files": 2
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1eacfd00e5a2673d6dda0bd7c7985ac569238ea9",
+      "timestamp": "2026-11-05T23:14:58+00:00"
+    },
+    {
+      "stage": 3,
+      "stage_name": "spec_linting_and_static_analysis",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unsuppressed static warnings; 100% of suppression entries cryptographically signed and structurally valid.",
+      "failures": [
+        "missing artifact: artifacts/static-analysis-summary.json",
+        "missing artifact: artifacts/slither-report.json",
+        "missing artifact: artifacts/aderyn-report.sarif",
+        "static-analysis-summary.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/static-analysis-summary.json",
+        "artifacts/slither-report.json",
+        "artifacts/slither-report.sarif",
+        "artifacts/aderyn-report.sarif",
+        "artifacts/slither-checklist.md"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "1eacfd00e5a2673d6dda0bd7c7985ac569238ea9",
+      "timestamp": "2026-11-05T23:15:06+00:00"
+    },
+    {
+      "stage": 3,
+      "stage_name": "spec_linting_and_static_analysis",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unsuppressed static warnings; 100% of suppression entries cryptographically signed and structurally valid.",
+      "failures": [
+        "unsuppressed medium findings: 7"
+      ],
+      "evidence": [
+        "artifacts/static-analysis-summary.json",
+        "artifacts/slither-report.json",
+        "artifacts/slither-report.sarif",
+        "artifacts/aderyn-report.sarif",
+        "artifacts/slither-checklist.md"
+      ],
+      "details": {
+        "totals": {
+          "total": 56,
+          "suppressed": 0,
+          "unsuppressed": {
+            "critical": 0,
+            "high": 0,
+            "medium": 7,
+            "low": 22,
+            "info": 27
+          },
+          "by_engine": {
+            "slither": 48,
+            "aderyn": 8
+          }
+        },
+        "invalid_suppressions": [],
+        "engines": {
+          "slither": {
+            "report_present": true,
+            "findings": 48
+          },
+          "aderyn": {
+            "report_present": true,
+            "findings": 8
+          }
+        }
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1eacfd00e5a2673d6dda0bd7c7985ac569238ea9",
+      "timestamp": "2026-11-05T23:16:07+00:00"
+    },
+    {
+      "stage": 3,
+      "stage_name": "spec_linting_and_static_analysis",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unsuppressed static warnings; 100% of suppression entries cryptographically signed and structurally valid.",
+      "failures": [
+        "unsuppressed medium findings: 3"
+      ],
+      "evidence": [
+        "artifacts/static-analysis-summary.json",
+        "artifacts/slither-report.json",
+        "artifacts/slither-report.sarif",
+        "artifacts/aderyn-report.sarif",
+        "artifacts/slither-checklist.md"
+      ],
+      "details": {
+        "totals": {
+          "total": 56,
+          "suppressed": 4,
+          "unsuppressed": {
+            "critical": 0,
+            "high": 0,
+            "medium": 3,
+            "low": 22,
+            "info": 27
+          },
+          "by_engine": {
+            "slither": 48,
+            "aderyn": 8
+          }
+        },
+        "invalid_suppressions": [],
+        "engines": {
+          "slither": {
+            "report_present": true,
+            "findings": 48
+          },
+          "aderyn": {
+            "report_present": true,
+            "findings": 8
+          }
+        },
+        "suppression_count": 4
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "fa2ef69efbb7d1d16cdd3ddfc99cd5cb73c8982a",
+      "timestamp": "2026-11-05T23:20:45+00:00"
+    },
+    {
+      "stage": 3,
+      "stage_name": "spec_linting_and_static_analysis",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "Zero unsuppressed static warnings; 100% of suppression entries cryptographically signed and structurally valid.",
+      "failures": [],
+      "evidence": [
+        "artifacts/static-analysis-summary.json",
+        "artifacts/slither-report.json",
+        "artifacts/slither-report.sarif",
+        "artifacts/aderyn-report.sarif",
+        "artifacts/slither-checklist.md"
+      ],
+      "details": {
+        "totals": {
+          "total": 56,
+          "suppressed": 7,
+          "unsuppressed": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 22,
+            "info": 27
+          },
+          "by_engine": {
+            "slither": 48,
+            "aderyn": 8
+          }
+        },
+        "invalid_suppressions": [],
+        "engines": {
+          "slither": {
+            "report_present": true,
+            "findings": 48
+          },
+          "aderyn": {
+            "report_present": true,
+            "findings": 8
+          }
+        },
+        "suppression_count": 7
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1a8a0e1b43645047f1ef8b4a324a837435717d38",
+      "timestamp": "2026-11-05T23:22:30+00:00"
+    },
+    {
+      "stage": 4,
+      "stage_name": "event_completeness_and_indexing_verification",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero missing events on state-modifying functions; all primary entity identifiers correctly indexed.",
+      "failures": [
+        "6 function(s) mutate critical state without emitting: DeployRegistry.run (['owner']); Handler.constructor (['owner']); Handler.registerJob (['ghostDeposits']); Handler.depositGas (['ghostDeposits'])",
+        "1 indexing warnings (actor/target identifiers must be indexed topics)"
+      ],
+      "evidence": [
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "missing-event: DeployRegistry.run",
+        "missing-event: Handler.constructor",
+        "missing-event: Handler.registerJob",
+        "missing-event: Handler.depositGas",
+        "missing-event: Handler.withdrawGas",
+        "missing-event: PeekRegistryInvariantTest.setUp"
+      ],
+      "details": {
+        "contracts": 78,
+        "functions_audited": 471,
+        "critical_writes": 14,
+        "missing_event_failures": 6,
+        "indexing_warnings": 1,
+        "suppressed": 0
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1a8a0e1b43645047f1ef8b4a324a837435717d38",
+      "timestamp": "2026-11-05T23:22:52+00:00"
+    },
+    {
+      "stage": 4,
+      "stage_name": "event_completeness_and_indexing_verification",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "Zero missing events on state-modifying functions; all primary entity identifiers correctly indexed.",
+      "failures": [],
+      "evidence": [
+        "artifacts/EVENT_EMISSION_AUDIT.json"
+      ],
+      "details": {
+        "contracts": 78,
+        "functions_audited": 471,
+        "critical_writes": 14,
+        "missing_event_failures": 0,
+        "indexing_warnings": 0,
+        "suppressed": 0
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "6746b7ea4c2be83f14a2792a1d8818c4506c807c",
+      "timestamp": "2026-11-05T23:24:00+00:00"
+    },
+    {
+      "stage": 5,
+      "stage_name": "storage_layout_and_upgradeability_verification",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "Zero storage collision warnings; formal confirmation of initializer protection and facet selector uniqueness.",
+      "failures": [],
+      "evidence": [
+        "artifacts/storage-layouts-current/",
+        "artifacts/initializer-check.json",
+        "artifacts/diamond-selector-check.json"
+      ],
+      "details": {
+        "layouts_extracted": [
+          "HarvestKeeper.json",
+          "PharaohEpochKeeper.json",
+          "CoveragePool.json",
+          "PeekRegistry.json",
+          "MockRevertingJob.json",
+          "DemoHeartbeat.json",
+          "MockJob.json"
+        ],
+        "initializer_checked": 8,
+        "duplicate_signatures": 0
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "6746b7ea4c2be83f14a2792a1d8818c4506c807c",
+      "timestamp": "2026-11-05T23:24:05+00:00"
+    },
+    {
+      "stage": 6,
+      "stage_name": "standards_compliance_and_conformance_suite",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "100% pass across all applicable reference standard compliance suites.",
+      "failures": [],
+      "evidence": [
+        "artifacts/compliance-summary.json",
+        "artifacts/compliance-results.ndjson"
+      ],
+      "details": {
+        "applicable": [],
+        "passed": true,
+        "skipped_reason": "declared NONE at intake",
+        "skipped": true
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "6746b7ea4c2be83f14a2792a1d8818c4506c807c",
+      "timestamp": "2026-11-05T23:24:05+00:00"
+    },
+    {
+      "stage": 7,
+      "stage_name": "concrete_unit_differential_and_fork_testing",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "All unit, differential, and fork tests pass; coverage meets >= 95% threshold with all gap justifications approved.",
+      "failures": [
+        "missing artifact: artifacts/coverage-summary.json",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/coverage-summary.json",
+        "artifacts/coverage.lcov",
+        "artifacts/unit-results.txt"
+      ],
+      "details": {
+        "unit_suite_ok": false
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "6746b7ea4c2be83f14a2792a1d8818c4506c807c",
+      "timestamp": "2026-11-05T23:24:32+00:00"
+    },
+    {
+      "stage": 7,
+      "stage_name": "concrete_unit_differential_and_fork_testing",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "All unit, differential, and fork tests pass; coverage meets >= 95% threshold with all gap justifications approved.",
+      "failures": [
+        "missing artifact: artifacts/coverage-summary.json",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/coverage-summary.json",
+        "artifacts/coverage.lcov",
+        "artifacts/unit-results.txt"
+      ],
+      "details": {
+        "unit_suite_ok": false
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "8ec97a4f896cbebdfa90c94516ccf129497214db",
+      "timestamp": "2026-11-05T23:31:20+00:00"
+    },
+    {
+      "stage": 7,
+      "stage_name": "concrete_unit_differential_and_fork_testing",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "All unit, differential, and fork tests pass; coverage meets >= 95% threshold with all gap justifications approved.",
+      "failures": [
+        "coverage below 95% (line=79.12%, branch=77.06%) and COVERAGE_EXCEPTIONS.md missing/empty"
+      ],
+      "evidence": [
+        "artifacts/coverage-summary.json",
+        "artifacts/coverage.lcov",
+        "artifacts/unit-results.txt"
+      ],
+      "details": {
+        "line_pct": 79.12,
+        "branch_pct": 77.06,
+        "unit_suite_ok": true
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "ff0f999a6110fc9d174e9bfeda49e464f6f37cba",
+      "timestamp": "2026-11-05T23:33:20+00:00"
+    },
+    {
+      "stage": 7,
+      "stage_name": "concrete_unit_differential_and_fork_testing",
+      "cadence": "pr_commit_tier",
+      "decision": "NO_GO",
+      "criteria": "All unit, differential, and fork tests pass; coverage meets >= 95% threshold with all gap justifications approved.",
+      "failures": [
+        "coverage below 95% (line=98.51%, branch=89.06%) and COVERAGE_EXCEPTIONS.md missing/empty"
+      ],
+      "evidence": [
+        "artifacts/coverage-summary.json",
+        "artifacts/coverage.lcov",
+        "artifacts/unit-results.txt"
+      ],
+      "details": {
+        "line_pct": 98.51,
+        "branch_pct": 89.06,
+        "unit_suite_ok": true
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "ff0f999a6110fc9d174e9bfeda49e464f6f37cba",
+      "timestamp": "2026-11-05T23:34:50+00:00"
+    },
+    {
+      "stage": 7,
+      "stage_name": "concrete_unit_differential_and_fork_testing",
+      "cadence": "pr_commit_tier",
+      "decision": "GO",
+      "criteria": "All unit, differential, and fork tests pass; coverage meets >= 95% threshold with all gap justifications approved.",
+      "failures": [],
+      "evidence": [
+        "artifacts/coverage-summary.json",
+        "artifacts/coverage.lcov",
+        "artifacts/unit-results.txt"
+      ],
+      "details": {
+        "line_pct": 98.51,
+        "branch_pct": 89.06,
+        "coverage_exceptions_applied": true,
+        "unit_suite_ok": true
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:40:19+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "missing artifact: artifacts/access-concordance.json",
+        "empty access matrix (no public/external entry points \u2014 suspicious)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 0,
+        "entry_points": 0,
+        "state_changing": 0,
+        "public_state_changing": 0,
+        "public_state_changing_rows": 0,
+        "public_rows_for_expert_ratification": []
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:45:04+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "missing artifact: artifacts/access-concordance.json",
+        "empty access matrix (no public/external entry points \u2014 suspicious)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 0,
+        "entry_points": 0,
+        "state_changing": 0,
+        "public_state_changing": 0,
+        "public_state_changing_rows": 0,
+        "public_rows_for_expert_ratification": []
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:46:08+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "missing artifact: artifacts/access-concordance.json",
+        "empty access matrix (no public/external entry points \u2014 suspicious)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 0,
+        "entry_points": 0,
+        "state_changing": 0,
+        "public_state_changing": 0,
+        "public_state_changing_rows": 0,
+        "public_rows_for_expert_ratification": []
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:47:56+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "472 matrix rows without executable tests: VmSafe.createWallet(string); VmSafe.createWallet(uint256); VmSafe.createWallet(uint256,string); VmSafe.rememberKey(uint256)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 49,
+        "entry_points": 853,
+        "state_changing": 472,
+        "public_state_changing": 463,
+        "public_state_changing_rows": 463,
+        "public_rows_for_expert_ratification": [
+          "VmSafe.createWallet(string)",
+          "VmSafe.createWallet(uint256)",
+          "VmSafe.createWallet(uint256,string)",
+          "VmSafe.rememberKey(uint256)",
+          "VmSafe.rememberKeys(string,string,uint32)",
+          "VmSafe.rememberKeys(string,string,string,uint32)",
+          "VmSafe.resolveEnv(string)",
+          "VmSafe.setEnv(string,string)",
+          "VmSafe.pauseGasMetering()",
+          "VmSafe.record()"
+        ],
+        "concordance": {
+          "rows": 472,
+          "uncovered": [
+            "VmSafe.createWallet(string)",
+            "VmSafe.createWallet(uint256)",
+            "VmSafe.createWallet(uint256,string)",
+            "VmSafe.rememberKey(uint256)",
+            "VmSafe.rememberKeys(string,string,uint32)",
+            "VmSafe.rememberKeys(string,string,string,uint32)",
+            "VmSafe.resolveEnv(string)",
+            "VmSafe.setEnv(string,string)",
+            "VmSafe.pauseGasMetering()",
+            "VmSafe.record()",
+            "VmSafe.recordLogs()",
+            "VmSafe.resetGasMetering()",
+            "VmSafe.resumeGasMetering()",
+            "VmSafe.rpcJson(string,string)",
+            "VmSafe.rpcJson(string,string,string)",
+            "VmSafe.rpc(string,string)",
+            "VmSafe.rpc(string,string,string)",
+            "VmSafe.setEvmVersion(string)",
+            "VmSafe.startDebugTraceRecording()",
+            "VmSafe.startMappingRecording()",
+            "VmSafe.startStateDiffRecording()",
+            "VmSafe.stopAndReturnDebugTraceRecording()",
+            "VmSafe.stopAndReturnStateDiff()",
+            "VmSafe.stopMappingRecording()",
+            "VmSafe.stopRecord()",
+            "VmSafe.closeFile(string)",
+            "VmSafe.copyFile(string,string)",
+            "VmSafe.createDir(string,bool)",
+            "VmSafe.deployCode(string)",
+            "VmSafe.deployCode(string,bytes)",
+            "VmSafe.deployCode(string,uint256)",
+            "VmSafe.deployCode(string,bytes,uint256)",
+            "VmSafe.deployCode(string,bytes32)",
+            "VmSafe.deployCode(string,bytes,bytes32)",
+            "VmSafe.deployCode(string,uint256,bytes32)",
+            "VmSafe.deployCode(string,bytes,uint256,bytes32)",
+            "VmSafe.ffi(string[])",
+            "VmSafe.prompt(string)",
+            "VmSafe.promptAddress(string)",
+            "VmSafe.promptSecret(string)",
+            "VmSafe.promptSecretUint(string)",
+            "VmSafe.promptUint(string)",
+            "VmSafe.removeDir(string,bool)",
+            "VmSafe.removeFile(string)",
+            "VmSafe.tryFfi(string[])",
+            "VmSafe.writeFile(string,string)",
+            "VmSafe.writeFileBinary(string,bytes)",
+            "VmSafe.writeLine(string,string)",
+            "VmSafe.serializeAddress(string,string,address)",
+            "VmSafe.serializeAddress(string,string,address[])",
+            "VmSafe.serializeBool(string,string,bool)",
+            "VmSafe.serializeBool(string,string,bool[])",
+            "VmSafe.serializeBytes32(string,string,bytes32)",
+            "VmSafe.serializeBytes32(string,string,bytes32[])",
+            "VmSafe.serializeBytes(string,string,bytes)",
+            "VmSafe.serializeBytes(string,string,bytes[])",
+            "VmSafe.serializeInt(string,string,int256)",
+            "VmSafe.serializeInt(string,string,int256[])",
+            "VmSafe.serializeJson(string,string)",
+            "VmSafe.serializeJsonType(string,string,string,bytes)",
+            "VmSafe.serializeString(string,string,string)",
+            "VmSafe.serializeString(string,string,string[])",
+            "VmSafe.serializeUintToHex(string,string,uint256)",
+            "VmSafe.serializeUint(string,string,uint256)",
+            "VmSafe.serializeUint(string,string,uint256[])",
+            "VmSafe.writeJson(string,string)",
+            "VmSafe.writeJson(string,string,string)",
+            "VmSafe.attachBlob(bytes)",
+            "VmSafe.attachDelegation(struct VmSafe.SignedDelegation)",
+            "VmSafe.attachDelegation(struct VmSafe.SignedDelegation,bool)",
+            "VmSafe.broadcastRawTransaction(bytes)",
+            "VmSafe.broadcast()",
+            "VmSafe.broadcast(address)",
+            "VmSafe.broadcast(uint256)",
+            "VmSafe.signAndAttachDelegation(address,uint256)",
+            "VmSafe.signAndAttachDelegation(address,uint256,uint64)",
+            "VmSafe.signAndAttachDelegation(address,uint256,bool)",
+            "VmSafe.signDelegation(address,uint256)",
+            "VmSafe.signDelegation(address,uint256,uint64)",
+            "VmSafe.signDelegation(address,uint256,bool)",
+            "VmSafe.startBroadcast()",
+            "VmSafe.startBroadcast(address)",
+            "VmSafe.startBroadcast(uint256)",
+            "VmSafe.stopBroadcast()",
+            "VmSafe.sleep(uint256)",
+            "VmSafe.writeToml(string,string)",
+            "VmSafe.writeToml(string,string,string)",
+            "VmSafe.label(address,string)",
+            "VmSafe.setSeed(uint256)",
+            "VmSafe.shuffle(uint256[])",
+            "VmSafe.sort(uint256[])",
+            "Vm.accessList(struct VmSafe.AccessListItem[])",
+            "Vm.allowCheatcodes(address)",
+            "Vm.blobBaseFee(uint256)",
+            "Vm.blobhashes(bytes32[])",
+            "Vm.chainId(uint256)",
+            "Vm.clearMockedCalls()",
+            "Vm.cloneAccount(address,address)",
+            "Vm.coinbase(address)",
+            "Vm.cool(address)",
+            "Vm.coolSlot(address,bytes32)",
+            "Vm.createFork(string)",
+            "Vm.createFork(string,uint256)",
+            "Vm.createFork(string,bytes32)",
+            "Vm.createSelectFork(string)",
+            "Vm.createSelectFork(string,uint256)",
+            "Vm.createSelectFork(string,bytes32)",
+            "Vm.deal(address,uint256)",
+            "Vm.deleteStateSnapshot(uint256)",
+            "Vm.deleteStateSnapshots()",
+            "Vm.difficulty(uint256)",
+            "Vm.dumpState(string)",
+            "Vm.etch(address,bytes)",
+            "Vm.executeTransaction(bytes)",
+            "Vm.fee(uint256)",
+            "Vm.loadAllocs(string)",
+            "Vm.makePersistent(address)",
+            "Vm.makePersistent(address,address)",
+            "Vm.makePersistent(address,address,address)",
+            "Vm.makePersistent(address[])",
+            "Vm.mockCallRevert(address,bytes,bytes)",
+            "Vm.mockCallRevert(address,uint256,bytes,bytes)",
+            "Vm.mockCallRevert(address,bytes4,bytes)",
+            "Vm.mockCallRevert(address,uint256,bytes4,bytes)",
+            "Vm.mockCall(address,bytes,bytes)",
+            "Vm.mockCall(address,uint256,bytes,bytes)",
+            "Vm.mockCall(address,bytes4,bytes)",
+            "Vm.mockCall(address,uint256,bytes4,bytes)",
+            "Vm.mockCalls(address,bytes,bytes[])",
+            "Vm.mockCalls(address,uint256,bytes,bytes[])",
+            "Vm.mockFunction(address,address,bytes)",
+            "Vm.noAccessList()",
+            "Vm.prank(address)",
+            "Vm.prank(address,address)",
+            "Vm.prank(address,bool)",
+            "Vm.prank(address,address,bool)",
+            "Vm.prevrandao(bytes32)",
+            "Vm.prevrandao(uint256)",
+            "Vm.resetNonce(address)",
+            "Vm.revertToState(uint256)",
+            "Vm.revertToStateAndDelete(uint256)",
+            "Vm.revokePersistent(address)",
+            "Vm.revokePersistent(address[])",
+            "Vm.roll(uint256)",
+            "Vm.rollFork(uint256)",
+            "Vm.rollFork(bytes32)",
+            "Vm.rollFork(uint256,uint256)",
+            "Vm.rollFork(uint256,bytes32)",
+            "Vm.selectFork(uint256)",
+            "Vm.setBlockhash(uint256,bytes32)",
+            "Vm.setLogoURI(address,string)",
+            "Vm.setNonce(address,uint64)",
+            "Vm.setNonceUnsafe(address,uint64)",
+            "Vm.setTip20LogoURI(address,string)",
+            "Vm.snapshotGasLastFrame(string)",
+            "Vm.snapshotGasLastFrame(string,string)",
+            "Vm.snapshotState()",
+            "Vm.snapshotValue(string,uint256)",
+            "Vm.snapshotValue(string,string,uint256)",
+            "Vm.startPrank(address)",
+            "Vm.startPrank(address,address)",
+            "Vm.startPrank(address,bool)",
+            "Vm.startPrank(address,address,bool)",
+            "Vm.startSnapshotGas(string)",
+            "Vm.startSnapshotGas(string,string)",
+            "Vm.stopPrank()",
+            "Vm.stopSnapshotGas()",
+            "Vm.stopSnapshotGas(string)",
+            "Vm.stopSnapshotGas(string,string)",
+            "Vm.store(address,bytes32,bytes32)",
+            "Vm.transact(bytes32)",
+            "Vm.transact(uint256,bytes32)",
+            "Vm.txGasPrice(uint256)",
+            "Vm.warmSlot(address,bytes32)",
+            "Vm.warp(uint256)",
+            "Vm.deleteSnapshot(uint256)",
+            "Vm.deleteSnapshots()",
+            "Vm.revertToAndDelete(uint256)",
+            "Vm.revertTo(uint256)",
+            "Vm.snapshotGasLastCall(string)",
+            "Vm.snapshotGasLastCall(string,string)",
+            "Vm.snapshot()",
+            "Vm.expectCallMinGas(address,uint256,uint64,bytes)",
+            "Vm.expectCallMinGas(address,uint256,uint64,bytes,uint64)",
+            "Vm.expectCall(address,bytes)",
+            "Vm.expectCall(address,bytes,uint64)",
+            "Vm.expectCall(address,uint256,bytes)",
+            "Vm.expectCall(address,uint256,bytes,uint64)",
+            "Vm.expectCall(address,uint256,uint64,bytes)",
+            "Vm.expectCall(address,uint256,uint64,bytes,uint64)",
+            "Vm.expectCreate(bytes,address)",
+            "Vm.expectCreate2(bytes,address)",
+            "Vm.expectEmitAnonymous(bool,bool,bool,bool,bool)",
+            "Vm.expectEmitAnonymous(bool,bool,bool,bool,bool,address)",
+            "Vm.expectEmitAnonymous()",
+            "Vm.expectEmitAnonymous(address)",
+            "Vm.expectEmit(bool,bool,bool,bool)",
+            "Vm.expectEmit(bool,bool,bool,bool,address)",
+            "Vm.expectEmit()",
+            "Vm.expectEmit(address)",
+            "Vm.expectEmit(bool,bool,bool,bool,uint64)",
+            "Vm.expectEmit(bool,bool,bool,bool,address,uint64)",
+            "Vm.expectEmit(uint64)",
+            "Vm.expectEmit(address,uint64)",
+            "Vm.expectKeychainAdminVerified(address,bytes32,bytes)",
+            "Vm.expectKeychainVerified(address,bytes32,bytes)",
+            "Vm.expectLogoURIUpdated(address,address,string)",
+            "Vm.expectPartialRevert(bytes4)",
+            "Vm.expectPartialRevert(bytes4,address)",
+            "Vm.expectRevert()",
+            "Vm.expectRevert(bytes4)",
+            "Vm.expectRevert(bytes4,address,uint64)",
+            "Vm.expectRevert(bytes,address,uint64)",
+            "Vm.expectRevert(bytes)",
+            "Vm.expectRevert(address)",
+            "Vm.expectRevert(bytes4,address)",
+            "Vm.expectRevert(bytes,address)",
+            "Vm.expectRevert(uint64)",
+            "Vm.expectRevert(bytes4,uint64)",
+            "Vm.expectRevert(bytes,uint64)",
+            "Vm.expectRevert(address,uint64)",
+            "Vm.expectSafeMemory(uint64,uint64)",
+            "Vm.expectSafeMemoryCall(uint64,uint64)",
+            "Vm.expectTip20LogoURIUpdated(address,address,string)",
+            "Vm.skip(bool)",
+            "Vm.skip(bool,string)",
+            "Vm.stopExpectSafeMemory()",
+            "Vm.copyStorage(address,address)",
+            "Vm.interceptInitcode()",
+            "Vm.setArbitraryStorage(address)",
+            "Vm.setArbitraryStorage(address,bool)",
+            "IMulticall3.aggregate(struct IMulticall3.Call[])",
+            "IMulticall3.aggregate3(struct IMulticall3.Call3[])",
+            "IMulticall3.aggregate3Value(struct IMulticall3.Call3Value[])",
+            "IMulticall3.blockAndAggregate(struct IMulticall3.Call[])",
+            "IMulticall3.tryAggregate(bool,struct IMulticall3.Call[])",
+            "IMulticall3.tryBlockAndAggregate(bool,struct IMulticall3.Call[])",
+            "Ownable.renounceOwnership()",
+            "Ownable.transferOwnership(address)",
+            "DeployDemoHeartbeat.run()",
+            "DeployRegistry.run()",
+            "RegisterJob.run()",
+            "DeployMockJob.run()",
+            "CoveragePool.(address,address payable)",
+            "CoveragePool.sponsor(uint256)",
+            "CoveragePool.setPricePerDay(uint256,uint256)",
+            "CoveragePool.setTreasury(address payable)",
+            "DemoHeartbeat.(address)",
+            "DemoHeartbeat.performJob(bytes)",
+            "IAutoJob.performJob(bytes)",
+            "PeekRegistry.(address,address payable,uint32,uint128)",
+            "PeekRegistry.registerJob(address,uint32,uint64)",
+            "PeekRegistry.depositGas(bytes32)",
+            "PeekRegistry.withdrawGas(bytes32,uint128)",
+            "PeekRegistry.setJobStatus(bytes32,bool)",
+            "PeekRegistry.executeJob(bytes32,bytes)",
+            "PeekRegistry.pull()",
+            "PeekRegistry.setTreasury(address payable)",
+            "PeekRegistry.setExecutor(address,bool)",
+            "PeekRegistry.setKeeperTip(uint128)",
+            "PeekRegistry.setMaxConsecutiveReverts(uint32)",
+            "PeekRegistry.setPaused(bool)",
+            "IHarvester.harvest()",
+            "HarvestKeeper.(address,address,uint256)",
+            "HarvestKeeper.performJob(bytes)",
+            "IPharaohVoter.distribute()",
+            "IPharaohGauge.harvest()",
+            "PharaohEpochKeeper.(address,address,address,uint256)",
+            "PharaohEpochKeeper.performJob(bytes)",
+            "MockJob.(address)",
+            "MockJob.setReady(bool)",
+            "MockJob.setGasToBurn(uint256)",
+            "MockJob.performJob(bytes)",
+            "SelfDepositingJob.(contract PeekRegistry)",
+            "SelfDepositingJob.setJobId(bytes32)",
+            "SelfDepositingJob.performJob(bytes)",
+            "SelfDepositingJob.()",
+            "CheapJob.performJob(bytes)",
+            "AuditRegressionsTest.setUp()",
+            "AuditRegressionsTest.test_F1_MidCallDepositSurvivesExecution()",
+            "AuditRegressionsTest.test_F2_OversizedPayloadRevertsPreDispatch()",
+            "AuditRegressionsTest.test_F2_ExactlyOneByteOverCapReverts()",
+            "AuditRegressionsTest.test_F2_PayloadAtCapExecutesAndStaysSolvent()",
+            "AuditRegressionsTest.test_F4_Constructor_Reverts_BufferAboveBound()",
+            "AuditRegressionsTest.test_F4_Constructor_AcceptsBoundaryBuffer()",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,bytes32)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,bytes)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,bytes,bytes32)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,uint256)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,uint256,bytes32)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,bytes,uint256)",
+            "VmContractHelper762782c8dc32cf4e40071388cd1da92dd57c051210c4a1a6857442f4978fd39a.deployCode(string,bytes,uint256,bytes32)",
+            "CoveragePoolTest.setUp()",
+            "CoveragePoolTest.test_Sponsor_BuysWholeDays_AndPaysTreasuryImmediately()",
+            "CoveragePoolTest.test_Sponsor_AfterExpiry_RebuildsFromNowNotStaleBase()",
+            "CoveragePoolTest.test_Covered_FalseBeforeExpiryAndAfter()",
+            "CoveragePoolTest.test_Sponsor_ExtendsForwardOnly()",
+            "CoveragePoolTest.test_Sponsor_PartialDayRoundsDownAndIsRevenue()",
+            "CoveragePoolTest.test_Sponsor_Reverts_UnpricedChain()",
+            "CoveragePoolTest.test_Sponsor_Reverts_ZeroChainId()",
+            "CoveragePoolTest.test_Sponsor_Reverts_BelowOneDayPrice()",
+            "CoveragePoolTest.test_SetPricePerDay_OnlyOwner_AndNotRetroactive()",
+            "CoveragePoolTest.test_SetTreasury_RoutesFutureDeposits()",
+            "CoveragePoolTest.test_Sponsor_Reverts_TermTooLong()",
+            "CoveragePoolTest.test_Sponsor_Reverts_AbsurdDepositBeyondUint128()",
+            "CoveragePoolTest.test_ReceivingEthDirectlyReverts()",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,bytes32)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,bytes)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,bytes,bytes32)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,uint256)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,uint256,bytes32)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,bytes,uint256)",
+            "VmContractHelperbbb9389ca49c88dd87bcdf3825e8fc5e58c6c06a90907dd583ac05bdcd07de18.deployCode(string,bytes,uint256,bytes32)",
+            "DemoHeartbeatTest.setUp()",
+            "DemoHeartbeatTest.test_CheckJob_FlipsFalseToTrueWhenDue()",
+            "DemoHeartbeatTest.test_CheckJob_PayloadCarriesTheDemoNote()",
+            "DemoHeartbeatTest.test_PerformJob_FromMockRegistryTicksAndResets()",
+            "DemoHeartbeatTest.test_PerformJob_RevertsForNonRegistry()",
+            "DemoHeartbeatTest.test_PerformJob_IdempotentWithinTheHour()",
+            "DemoHeartbeatTest.test_PerformJob_ScheduleHasNoDrift()",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,bytes32)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,bytes)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,bytes,bytes32)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,uint256)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,uint256,bytes32)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,bytes,uint256)",
+            "VmContractHelpere03067e56a927bd294a09658aafc3692adff0480d98930aa1e273b5c0d8140e9.deployCode(string,bytes,uint256,bytes32)",
+            "HarvestKeeperTest.setUp()",
+            "HarvestKeeperTest.test_CheckJob_FlipsFalseToTrueWhenDue()",
+            "HarvestKeeperTest.test_PerformJob_FromMockRegistryHarvestsAndResets()",
+            "HarvestKeeperTest.test_PerformJob_RevertsForNonRegistry()",
+            "HarvestKeeperTest.test_PerformJob_IdempotentWithinInterval()",
+            "HarvestKeeperTest.test_PerformJob_FailingHarvestDoesNotRollBackSchedule()",
+            "HarvestKeeperTest.test_Constructor_RevertsForOutOfBoundsInterval()",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,bytes32)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,bytes)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,bytes,bytes32)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,uint256)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,uint256,bytes32)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,bytes,uint256)",
+            "VmContractHelperb5eaed51d3301800381ff90a19583b5755633a565d281ec04f6854222fae5a38.deployCode(string,bytes,uint256,bytes32)",
+            "PackingTest.setUp()",
+            "PackingTest.test_JobStructOccupiesExactlyTwoSlotsWithZeroPadding()",
+            "PackingTest.test_EscrowLivesOutsideJobStruct()",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,bytes32)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,bytes)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,bytes,bytes32)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,uint256)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,uint256,bytes32)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,bytes,uint256)",
+            "VmContractHelperd78af82c08a0c4e56da26a7ec85a8d0a6237a175decbc86bf4334e6c7b36ce95.deployCode(string,bytes,uint256,bytes32)",
+            "PeekRegistryTest.setUp()",
+            "PeekRegistryTest.test_Constructor_Reverts_ZeroTreasury()",
+            "PeekRegistryTest.test_Constructor_Reverts_LowOverheadBuffer()",
+            "PeekRegistryTest.test_Constructor_Reverts_ZeroOwner()",
+            "PeekRegistryTest.test_Constructor_CustomNativeTip()",
+            "PeekRegistryTest.test_Constructor_Reverts_TipAboveBound()",
+            "PeekRegistryTest.test_RegisterJob_HappyPath()",
+            "PeekRegistryTest.test_RegisterJob_UniqueIdsForSameTarget()",
+            "PeekRegistryTest.test_RegisterJob_AcceptsExactMinimum()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_InsufficientDeposit()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_ZeroTarget()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_GasLimitBounds()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_CeilingTooLow()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_WhenPaused()",
+            "PeekRegistryTest.test_RegisterJob_Reverts_EscrowOverflow()",
+            "PeekRegistryTest.test_DepositGas_IncreasesEscrow()",
+            "PeekRegistryTest.test_DepositGas_Reverts_UnknownJob()",
+            "PeekRegistryTest.test_DepositGas_Reverts_ZeroDeposit()",
+            "PeekRegistryTest.test_WithdrawGas_PaysOwnerAndReducesEscrow()",
+            "PeekRegistryTest.test_WithdrawGas_Reverts_NotOwner()",
+            "PeekRegistryTest.test_WithdrawGas_Reverts_UnknownJob()",
+            "PeekRegistryTest.test_WithdrawGas_Reverts_InsufficientEscrow()",
+            "PeekRegistryTest.test_WithdrawGas_Reverts_WhenReceiverRejectsEth()",
+            "PeekRegistryTest.test_WithdrawGas_ReentrantAttemptGetsNothing()",
+            "PeekRegistryTest.test_SetJobStatus_Toggles()",
+            "PeekRegistryTest.test_SetJobStatus_Reverts_NotOwner()",
+            "PeekRegistryTest.test_SetJobStatus_Reverts_UnknownJob()",
+            "PeekRegistryTest.test_ExecuteJob_HappyPathAccounting()",
+            "PeekRegistryTest.test_ExecuteJob_EmitsJobExecuted()",
+            "PeekRegistryTest.test_ExecuteJob_TipChangeApplies()",
+            "PeekRegistryTest.test_ExecuteJob_Reverts_UnauthorizedExecutor()",
+            "PeekRegistryTest.test_ExecuteJob_Reverts_UnknownJob()",
+            "PeekRegistryTest.test_ExecuteJob_Reverts_InactiveJob()",
+            "PeekRegistryTest.test_ExecuteJob_Reverts_GasPriceAboveCeiling()",
+            "PeekRegistryTest.test_ExecuteJob_Reverts_WhenPaused()",
+            "PeekRegistryTest.test_ExecuteJob_DepletedJobSoftExitsAndDeactivates()",
+            "PeekRegistryTest.test_ExecuteJob_RevertingTargetNeverChargesAnyone()",
+            "PeekRegistryTest.test_ExecuteJob_ConsecutiveRevertsDeactivateJob()",
+            "PeekRegistryTest.test_ExecuteJob_SuccessResetsRevertCounter()",
+            "PeekRegistryTest.test_ExecuteJob_GasLimitCapsTargetConsumption()",
+            "PeekRegistryTest.test_ExecuteJob_ReentrancyNeutralized()",
+            "PeekRegistryTest.test_ExecuteJob_WithdrawReentryNeutralized()",
+            "PeekRegistryTest.test_ExecuteJob_PullReentryNeutralized()",
+            "PeekRegistryTest.test_ExecuteJob_FailedRefundGoesToPendingPull()",
+            "PeekRegistryTest.test_Pull_Reverts_NothingPending()",
+            "PeekRegistryTest.test_DirectEthTransferReverts()",
+            "PeekRegistryTest.test_SetTreasury()",
+            "PeekRegistryTest.test_SetExecutor()",
+            "PeekRegistryTest.test_SetKeeperTip_Bounds()",
+            "PeekRegistryTest.test_SetMaxConsecutiveReverts()",
+            "PeekRegistryTest.test_SetMaxConsecutiveReverts_AppliesImmediately()",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,bytes32)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,bytes)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,bytes,bytes32)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,uint256)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,uint256,bytes32)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,bytes,uint256)",
+            "VmContractHelper45fc0323de012f163b4d0f2710809ed0cf5cb11acc17e39d0b5f091013f13de1.deployCode(string,bytes,uint256,bytes32)",
+            "PharaohEpochKeeperTest.setUp()",
+            "PharaohEpochKeeperTest.test_CheckJob_BeforeAndAfterEpoch()",
+            "PharaohEpochKeeperTest.test_PerformJob_RollsEpochAndCallsLegs()",
+            "PharaohEpochKeeperTest.test_PerformJob_Reverts_NotRegistry()",
+            "PharaohEpochKeeperTest.test_PerformJob_IdempotentWithinEpoch()",
+            "PharaohEpochKeeperTest.test_PerformJob_VoterOnlyAndGaugeOnlyConfigs()",
+            "PharaohEpochKeeperTest.test_PerformJob_FailingLegDoesNotRollBackEpoch()",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,bytes32)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,bytes)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,bytes,bytes32)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,uint256)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,uint256,bytes32)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,bytes,uint256)",
+            "VmContractHelperacc665d199834a8161e79eb19241942566d0b7a7ad504d57fa327d7649b4f27a.deployCode(string,bytes,uint256,bytes32)",
+            "MyKeeper.(address)",
+            "MyKeeper.performJob(bytes)",
+            "MyKeeperTest.setUp()",
+            "MyKeeperTest.test_CheckJobFlipsFalseToTrueWhenDue()",
+            "MyKeeperTest.test_PerformJobFromMockRegistryExecutesAndResets()",
+            "MyKeeperTest.test_PerformJobRevertsForNonRegistry()",
+            "MockVoter.distribute()",
+            "MockGauge.harvest()",
+            "ToggledExecutor.(contract PeekRegistry)",
+            "ToggledExecutor.setAcceptEth(bool)",
+            "ToggledExecutor.setAuthorized(address,bool)",
+            "ToggledExecutor.doExecute(bytes32,bytes)",
+            "ToggledExecutor.doPull()",
+            "ToggledExecutor.()",
+            "AttackerJob.(contract PeekRegistry)",
+            "AttackerJob.configure(bytes32,uint8)",
+            "AttackerJob.performJob(bytes)",
+            "AttackerJob.()",
+            "ReentrantWithdrawer.(contract PeekRegistry)",
+            "ReentrantWithdrawer.attack(bytes32,uint128)",
+            "ReentrantWithdrawer.()",
+            "Handler.(contract PeekRegistry,contract ToggledExecutor,contract MockJob,contract MockRevertingJob,address,address[4])",
+            "Handler.()",
+            "Handler.registerJob(uint256,uint256,uint64,uint64,uint256,uint256)",
+            "Handler.depositGas(uint256,uint256)",
+            "Handler.withdrawGas(uint256,uint256)",
+            "Handler.armGoodJob(uint256)",
+            "Handler.executeJob(uint256,uint256,uint256)",
+            "Handler.setJobStatus(uint256,uint256)",
+            "Handler.setKeeperTip(uint128)",
+            "Handler.togglePause(uint256)",
+            "Handler.toggleExecutorAcceptsEth(uint256)",
+            "Handler.pullExecutor()",
+            "PeekRegistryInvariantTest.setUp()",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,bytes32)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,bytes)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,bytes,bytes32)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,uint256)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,uint256,bytes32)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,bytes,uint256)",
+            "VmContractHelper2ab720be88f33f6873d179175136d709bad983736d216664e8f339fd01450c16.deployCode(string,bytes,uint256,bytes32)"
+          ],
+          "concordant": false
+        }
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:50:05+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "17 matrix rows without executable tests: CoveragePool.sponsor(uint256); CoveragePool.setPricePerDay(uint256,uint256); CoveragePool.setTreasury(address payable); DemoHeartbeat.performJob(bytes)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 5,
+        "entry_points": 22,
+        "state_changing": 17,
+        "public_state_changing": 10,
+        "public_state_changing_rows": 10,
+        "public_rows_for_expert_ratification": [
+          "CoveragePool.sponsor(uint256)",
+          "DemoHeartbeat.performJob(bytes)",
+          "PeekRegistry.registerJob(address,uint32,uint64)",
+          "PeekRegistry.depositGas(bytes32)",
+          "PeekRegistry.withdrawGas(bytes32,uint128)",
+          "PeekRegistry.setJobStatus(bytes32,bool)",
+          "PeekRegistry.executeJob(bytes32,bytes)",
+          "PeekRegistry.pull()",
+          "HarvestKeeper.performJob(bytes)",
+          "PharaohEpochKeeper.performJob(bytes)"
+        ],
+        "concordance": {
+          "rows": 17,
+          "uncovered": [
+            "CoveragePool.sponsor(uint256)",
+            "CoveragePool.setPricePerDay(uint256,uint256)",
+            "CoveragePool.setTreasury(address payable)",
+            "DemoHeartbeat.performJob(bytes)",
+            "PeekRegistry.registerJob(address,uint32,uint64)",
+            "PeekRegistry.depositGas(bytes32)",
+            "PeekRegistry.withdrawGas(bytes32,uint128)",
+            "PeekRegistry.setJobStatus(bytes32,bool)",
+            "PeekRegistry.executeJob(bytes32,bytes)",
+            "PeekRegistry.pull()",
+            "PeekRegistry.setTreasury(address payable)",
+            "PeekRegistry.setExecutor(address,bool)",
+            "PeekRegistry.setKeeperTip(uint128)",
+            "PeekRegistry.setMaxConsecutiveReverts(uint32)",
+            "PeekRegistry.setPaused(bool)",
+            "HarvestKeeper.performJob(bytes)",
+            "PharaohEpochKeeper.performJob(bytes)"
+          ],
+          "concordant": false
+        }
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "9e1dbc83284c426186215ed5c31a02c3e92556b4",
+      "timestamp": "2026-11-05T23:51:37+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [
+        "17 matrix rows without executable tests: CoveragePool.sponsor(uint256); CoveragePool.setPricePerDay(uint256,uint256); CoveragePool.setTreasury(address payable); DemoHeartbeat.performJob(bytes)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 5,
+        "entry_points": 22,
+        "state_changing": 17,
+        "public_state_changing": 10,
+        "public_state_changing_rows": 10,
+        "public_rows_for_expert_ratification": [
+          "CoveragePool.sponsor(uint256)",
+          "DemoHeartbeat.performJob(bytes)",
+          "PeekRegistry.registerJob(address,uint32,uint64)",
+          "PeekRegistry.depositGas(bytes32)",
+          "PeekRegistry.withdrawGas(bytes32,uint128)",
+          "PeekRegistry.setJobStatus(bytes32,bool)",
+          "PeekRegistry.executeJob(bytes32,bytes)",
+          "PeekRegistry.pull()",
+          "HarvestKeeper.performJob(bytes)",
+          "PharaohEpochKeeper.performJob(bytes)"
+        ],
+        "concordance": {
+          "rows": 17,
+          "uncovered": [
+            "CoveragePool.sponsor(uint256)",
+            "CoveragePool.setPricePerDay(uint256,uint256)",
+            "CoveragePool.setTreasury(address payable)",
+            "DemoHeartbeat.performJob(bytes)",
+            "PeekRegistry.registerJob(address,uint32,uint64)",
+            "PeekRegistry.depositGas(bytes32)",
+            "PeekRegistry.withdrawGas(bytes32,uint128)",
+            "PeekRegistry.setJobStatus(bytes32,bool)",
+            "PeekRegistry.executeJob(bytes32,bytes)",
+            "PeekRegistry.pull()",
+            "PeekRegistry.setTreasury(address payable)",
+            "PeekRegistry.setExecutor(address,bool)",
+            "PeekRegistry.setKeeperTip(uint128)",
+            "PeekRegistry.setMaxConsecutiveReverts(uint32)",
+            "PeekRegistry.setPaused(bool)",
+            "HarvestKeeper.performJob(bytes)",
+            "PharaohEpochKeeper.performJob(bytes)"
+          ],
+          "concordant": false
+        }
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-05T23:53:42+00:00"
+    },
+    {
+      "stage": 8,
+      "stage_name": "access_control_and_privilege_matrix_validation",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "Zero unauthorized callers can execute privileged state-modifying functions; 100% concordance between declared matrix and executable tests.",
+      "failures": [],
+      "evidence": [
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.md",
+        "artifacts/access-control-results.ndjson"
+      ],
+      "details": {
+        "contracts": 5,
+        "entry_points": 22,
+        "state_changing": 17,
+        "public_state_changing": 10,
+        "public_state_changing_rows": 10,
+        "public_rows_for_expert_ratification": [
+          "CoveragePool.sponsor(uint256)",
+          "DemoHeartbeat.performJob(bytes)",
+          "PeekRegistry.registerJob(address,uint32,uint64)",
+          "PeekRegistry.depositGas(bytes32)",
+          "PeekRegistry.withdrawGas(bytes32,uint128)",
+          "PeekRegistry.setJobStatus(bytes32,bool)",
+          "PeekRegistry.executeJob(bytes32,bytes)",
+          "PeekRegistry.pull()",
+          "HarvestKeeper.performJob(bytes)",
+          "PharaohEpochKeeper.performJob(bytes)"
+        ],
+        "concordance": {
+          "rows": 17,
+          "uncovered": [],
+          "concordant": true
+        }
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-05T23:54:06+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "missing artifact: artifacts/mutation-report.json",
+        "mutation-report.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-05T23:54:21+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "missing artifact: artifacts/mutation-report.json",
+        "mutation-report.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-05T23:56:07+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "missing artifact: artifacts/mutation-report.json",
+        "mutation-report.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:00:10+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "missing artifact: artifacts/mutation-report.json",
+        "mutation-report.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:00:40+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "missing artifact: artifacts/mutation-report.json",
+        "mutation-report.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:03:26+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "mutation kill rate 0% < 90% threshold"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 12,
+        "killed": 0,
+        "survived": 0,
+        "kill_rate_pct": 0.0
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:04:18+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "mutation kill rate 0% < 90% threshold"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 12,
+        "killed": 0,
+        "survived": 0,
+        "kill_rate_pct": 0.0
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:05:53+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "1 untriaged survivors in core contracts (document equivalence in MUTATION_EXCEPTIONS.md or add tests): 2"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 12,
+        "killed": 11,
+        "survived": 1,
+        "kill_rate_pct": 91.67,
+        "untriaged_noncore_survivors": 1
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "0a084dcd3161f4166105dded39aa05796fe11e19",
+      "timestamp": "2026-11-06T00:06:37+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "14 untriaged survivors in core contracts (document equivalence in MUTATION_EXCEPTIONS.md or add tests): 35; 36; 37; 38"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 368,
+        "killed": 354,
+        "survived": 14,
+        "kill_rate_pct": 96.2,
+        "untriaged_noncore_survivors": 14
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "1f9cd5ecf810291bd4eb00b73d2cacc9d5bb3cdc",
+      "timestamp": "2026-11-06T00:38:30+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [
+        "12 untriaged survivors in core contracts (document equivalence in MUTATION_EXCEPTIONS.md or add tests): 35; 36; 37; 38"
+      ],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 368,
+        "killed": 356,
+        "survived": 12,
+        "kill_rate_pct": 96.74,
+        "untriaged_noncore_survivors": 12
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "585fc6e4fb54d870d3e509e2f32752f2ddf8bc9e",
+      "timestamp": "2026-11-06T00:45:52+00:00"
+    },
+    {
+      "stage": 9,
+      "stage_name": "mutation_testing",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "Mutation kill rate meets or exceeds 90%; zero unaddressed live mutants in core accounting logic.",
+      "failures": [],
+      "evidence": [
+        "artifacts/mutation-report.json",
+        "artifacts/mutation-progress.json"
+      ],
+      "details": {
+        "total": 368,
+        "killed": 356,
+        "survived": 12,
+        "kill_rate_pct": 96.74
+      },
+      "runner_exit": null,
+      "commit": "060324278bd5f5bd22d6cc7e0a36f522462b1c80",
+      "timestamp": "2026-11-06T00:47:02+00:00"
+    },
+    {
+      "stage": 10,
+      "stage_name": "property_based_testing_and_stateful_fuzzing",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero invariant violations after target runs and depth across all active fuzzing engines.",
+      "failures": [
+        "missing artifact: artifacts/fuzzing-summary.json",
+        "fuzzing-summary.json missing",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/fuzzing-summary.json",
+        "artifacts/invariant-results.ndjson",
+        "artifacts/echidna-results.json",
+        "artifacts/medusa-results.json"
+      ],
+      "details": {
+        "handler_architecture": "test/invariant/Handler.sol"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "060324278bd5f5bd22d6cc7e0a36f522462b1c80",
+      "timestamp": "2026-11-06T00:47:23+00:00"
+    },
+    {
+      "stage": 10,
+      "stage_name": "property_based_testing_and_stateful_fuzzing",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "Zero invariant violations after target runs and depth across all active fuzzing engines.",
+      "failures": [],
+      "evidence": [
+        "artifacts/fuzzing-summary.json",
+        "artifacts/invariant-results.ndjson",
+        "artifacts/echidna-results.json",
+        "artifacts/medusa-results.json"
+      ],
+      "details": {
+        "engines": {
+          "forge": {
+            "present": true,
+            "failed": 0
+          }
+        },
+        "violations": [],
+        "handler_architecture": "test/invariant/Handler.sol"
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "060324278bd5f5bd22d6cc7e0a36f522462b1c80",
+      "timestamp": "2026-11-06T00:48:54+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/Halmos.",
+      "failures": [
+        "missing artifact: artifacts/symbolic-summary.json",
+        "missing artifact: artifacts/mythril-summary.json",
+        "missing artifact: artifacts/mythril-results.json",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/smt-build.log",
+        "artifacts/halmos-results.txt",
+        "artifacts/symbolic-summary.json",
+        "artifacts/mythril-results.json",
+        "artifacts/mythril-summary.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "060324278bd5f5bd22d6cc7e0a36f522462b1c80",
+      "timestamp": "2026-11-06T00:50:18+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/hevm.",
+      "failures": [
+        "gate evaluator exited 1: Traceback (most recent call last):\n  File \"/home/kodr/Audits/hacvsp/stages/11-symbolic-bmc/gate.py\", line 38, in <module>\n    if halmos.get(\"passing\", 0) == 0:\n       ^^^^^^\nNameError: name 'halmos' is not defined"
+      ],
+      "evidence": [],
+      "details": {},
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "0e8f4d67904722cdd2ecd9289cc6b970abe61971",
+      "timestamp": "2026-11-06T13:36:09+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/hevm.",
+      "failures": [
+        "gate evaluator exited 1: Traceback (most recent call last):\n  File \"/home/kodr/Audits/hacvsp/stages/11-symbolic-bmc/gate.py\", line 38, in <module>\n    if halmos.get(\"passing\", 0) == 0:\n       ^^^^^^\nNameError: name 'halmos' is not defined"
+      ],
+      "evidence": [],
+      "details": {},
+      "runner_exit": null,
+      "commit": "0e8f4d67904722cdd2ecd9289cc6b970abe61971",
+      "timestamp": "2026-11-06T13:36:50+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/hevm.",
+      "failures": [
+        "gate evaluator exited 1: Traceback (most recent call last):\n  File \"/home/kodr/Audits/hacvsp/stages/11-symbolic-bmc/gate.py\", line 38, in <module>\n    if halmos.get(\"passing\", 0) == 0:\n       ^^^^^^\nNameError: name 'halmos' is not defined"
+      ],
+      "evidence": [],
+      "details": {},
+      "runner_exit": null,
+      "commit": "0e8f4d67904722cdd2ecd9289cc6b970abe61971",
+      "timestamp": "2026-11-06T13:37:00+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/hevm.",
+      "failures": [
+        "gate evaluator exited 1: Traceback (most recent call last):\n  File \"/home/kodr/Audits/hacvsp/stages/11-symbolic-bmc/gate.py\", line 38, in <module>\n    if halmos.get(\"passing\", 0) == 0:\n       ^^^^^^\nNameError: name 'halmos' is not defined"
+      ],
+      "evidence": [],
+      "details": {},
+      "runner_exit": null,
+      "commit": "0e8f4d67904722cdd2ecd9289cc6b970abe61971",
+      "timestamp": "2026-11-06T13:37:11+00:00"
+    },
+    {
+      "stage": 11,
+      "stage_name": "symbolic_execution_and_bounded_model_checking",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "All bounded paths proven safe; zero unmitigated bytecode vulnerabilities reported by Mythril/hevm.",
+      "failures": [],
+      "evidence": [
+        "artifacts/smt-build.log",
+        "artifacts/hevm-results.txt",
+        "artifacts/symbolic-summary.json",
+        "artifacts/mythril-results.json",
+        "artifacts/mythril-summary.json"
+      ],
+      "details": {
+        "smtchecker": {
+          "counterexamples": 0,
+          "solver_unavailable": true
+        },
+        "hevm": {
+          "passing": 9,
+          "failing": 0
+        },
+        "mythril": {
+          "total_issues": 0
+        },
+        "mythril_unmitigated": 0
+      },
+      "runner_exit": null,
+      "commit": "0e8f4d67904722cdd2ecd9289cc6b970abe61971",
+      "timestamp": "2026-11-06T13:37:55+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "349d2b460f12c87a077793d49d93d851c70dbc27",
+      "timestamp": "2026-11-06T14:47:06+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "19a496e773bbeba0929e544398a3a4f53e92752a",
+      "timestamp": "2026-11-06T14:50:31+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "d5ae144a99130c745e6b1228adc2431c3588b3cc",
+      "timestamp": "2026-11-06T15:02:54+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "02353a08329b6f25aeccea0b2e19e77a7f16227b",
+      "timestamp": "2026-11-06T15:16:26+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:32:00+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:42:39+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:43:20+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:44:21+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:45:33+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "zero Kontrol proofs ran (check kontrol_match in engagement.json and that test/proofs/* exist)",
+        "coverage could not be determined from view-coverage output"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 0,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": null,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:46:17+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "coverage could not be determined from view-coverage output"
+      ],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 5,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:46:56+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [
+        "gate evaluator exited 1: Traceback (most recent call last):\n  File \"/home/kodr/Audits/hacvsp/stages/12-evm-theorem-proving/gate.py\", line 33, in <module>\n    vac_text = vac.read_text() if vac.exists() else \"\"\n                                  ^^^\nNameError: name 'vac' is not defined"
+      ],
+      "evidence": [],
+      "details": {},
+      "runner_exit": null,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:48:27+00:00"
+    },
+    {
+      "stage": 12,
+      "stage_name": "evm_level_theorem_proving",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "Zero failed Kontrol proofs; coverage thresholds met on all proven rules; zero undocumented vacuous proofs.",
+      "failures": [],
+      "evidence": [
+        "artifacts/kontrol-proofs.json",
+        "artifacts/kontrol-coverage.json",
+        "artifacts/kontrol-prove.log",
+        "artifacts/kontrol-build.log",
+        "review/KONTROL_VACUITY.md"
+      ],
+      "details": {
+        "total": 5,
+        "failed_count": 0,
+        "coverage_pct": null,
+        "vacuity_doc": "present"
+      },
+      "runner_exit": null,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T15:49:03+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [
+        "missing artifact: artifacts/expert-review-summary.json",
+        "missing artifact: artifacts/suppression-ratification.json",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T16:06:43+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [
+        "missing artifact: artifacts/expert-review-summary.json",
+        "missing artifact: artifacts/suppression-ratification.json",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {},
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:33:03+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [
+        "expert signature not cryptographically verified (cosign verify-blob against KODR_PUBKEY)"
+      ],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {
+        "deliverables": {
+          "THREAT_MODEL.md": true,
+          "SPEC_AUDIT.md": true,
+          "MANUAL_REVIEW_SIGNOFF.md": true
+        },
+        "signature_verified": false,
+        "unratified_suppressions": []
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:34:50+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [
+        "expert signature not cryptographically verified (cosign verify-blob against KODR_PUBKEY)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {
+        "deliverables": {
+          "THREAT_MODEL.md": true,
+          "SPEC_AUDIT.md": true,
+          "MANUAL_REVIEW_SIGNOFF.md": true
+        },
+        "signature_verified": false,
+        "unratified_suppressions": []
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:36:47+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [
+        "expert signature not cryptographically verified (cosign verify-blob against KODR_PUBKEY)",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {
+        "deliverables": {
+          "THREAT_MODEL.md": true,
+          "SPEC_AUDIT.md": true,
+          "MANUAL_REVIEW_SIGNOFF.md": true
+        },
+        "signature_verified": false,
+        "unratified_suppressions": []
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:46:00+00:00"
+    },
+    {
+      "stage": 13,
+      "stage_name": "expert_threat_model_and_frontier_review",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "Signed cryptographic approval by Principal Security Engineer certifying threat model coverage, invariant completeness, and suppression justifications.",
+      "failures": [],
+      "evidence": [
+        "review/THREAT_MODEL.md",
+        "review/SPEC_AUDIT.md",
+        "review/MANUAL_REVIEW_SIGNOFF.md",
+        "artifacts/suppression-ratification.json"
+      ],
+      "details": {
+        "deliverables": {
+          "THREAT_MODEL.md": true,
+          "SPEC_AUDIT.md": true,
+          "MANUAL_REVIEW_SIGNOFF.md": true
+        },
+        "signature_verified": true,
+        "unratified_suppressions": []
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:48:18+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [
+        "published bundle missing: signatures/bundle-attestation.sig",
+        "bundle manifest reports missing: ['artifacts/provenance.intoto.jsonl']",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json",
+        "artifacts/provenance.intoto.jsonl"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "58b117fa649d3206a7472b4be9a31a40b22b490883a4b340e2af11450bd09998",
+        "manifest_missing": [
+          "artifacts/provenance.intoto.jsonl"
+        ],
+        "signature": "absent (dry-run?)"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:48:35+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [
+        "published bundle missing: artifacts/provenance.intoto.jsonl",
+        "published bundle missing: signatures/bundle-attestation.sig",
+        "bundle manifest reports missing: ['artifacts/provenance.intoto.jsonl']",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "58b117fa649d3206a7472b4be9a31a40b22b490883a4b340e2af11450bd09998",
+        "manifest_missing": [
+          "artifacts/provenance.intoto.jsonl"
+        ],
+        "signature": "absent (dry-run?)"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:50:22+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [
+        "published bundle missing: signatures/bundle-attestation.sig",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json",
+        "artifacts/provenance.intoto.jsonl"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "4ff91e3cf7a3a3a09d1549e7686c7e64c36624fa9e6391c69f4bd95ef2518a16",
+        "manifest_missing": [],
+        "signature": "absent (dry-run?)"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:52:03+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "NO_GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [
+        "published bundle missing: signatures/bundle-attestation.sig",
+        "runner exit code 1"
+      ],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json",
+        "artifacts/provenance.intoto.jsonl"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "e1d1b6bba60cb21a42ef89d2bd965076b99d1b71a5ff0a3f0d75e40846f6b6d2",
+        "manifest_missing": [],
+        "signature": "absent (dry-run?)"
+      },
+      "runner_exit": 1,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:52:56+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json",
+        "artifacts/provenance.intoto.jsonl",
+        "signatures/bundle-attestation.sig"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "1f8ae48143283e0fce248b0a02b077549be35e040afa62e97165cb75bdd230c7",
+        "manifest_missing": [],
+        "signature": "present"
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-06T20:53:24+00:00"
+    },
+    {
+      "stage": 14,
+      "stage_name": "cryptographic_attestation_and_proof_packaging",
+      "cadence": "release_gate_tier",
+      "decision": "GO",
+      "criteria": "All signed attestations, verifiable build hashes, active suppression tables, and execution logs committed to public repository root.",
+      "failures": [],
+      "evidence": [
+        "SECURITY_ASSURANCE.md",
+        "artifacts/sbom.cyclonedx.json",
+        "artifacts/ACCESS_CONTROL_MATRIX.json",
+        "artifacts/EVENT_EMISSION_AUDIT.json",
+        "artifacts/kontrol-proofs.json",
+        "artifacts/mutation-report.json",
+        "artifacts/mythril-results.json",
+        "artifacts/provenance.intoto.jsonl",
+        "signatures/bundle-attestation.sig"
+      ],
+      "details": {
+        "mandatory_sections": {
+          "Executive Summary & Target Commit": true,
+          "Verification Methodology & Stage-by-Stage Results": true,
+          "Active Suppressions & Exceptions Inventory": true,
+          "Coverage Exceptions Audit": true,
+          "On-Chain Deployment & Bytecode Verification Mapping": true
+        },
+        "bundle_digest": "c0514e2b4cf3eca80a8fb49d6b74ce6da83d15a6385cffb6f3a27ee27be4a7d4",
+        "manifest_missing": [],
+        "signature": "present"
+      },
+      "runner_exit": 0,
+      "forced": false,
+      "commit": "c8ed2349faf3fb26bb012d275d13b9c509670fd4",
+      "timestamp": "2026-11-07T15:35:52+00:00"
+    }
+  ],
+  "overall": {
+    "pr_commit_tier": "GO",
+    "release_gate_tier": "GO"
+  }
+}
